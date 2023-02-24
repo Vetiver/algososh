@@ -1,11 +1,13 @@
 .container {
-
+    
     gap: 12px;
     display: flex;
     flex-direction: row;
 }
 
 .mainContainer {
+    display: flex;
+    flex-direction: column;
     width: 567px;
     margin-left: auto;
     margin-right: auto;

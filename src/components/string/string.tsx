@@ -6,13 +6,15 @@ import { Circle } from "../ui/circle/circle";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 
 export const StringComponent: React.FC = () => {
-  let data: any = [];
   const [input, setInput] = useState<any>();
+  const [data, setData] = useState<any>([])
   const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setInput([e.target.value]);
     
   };
-
+  const handleClick = () => {
+    setData(input)
+  }
  
 
 
@@ -25,7 +27,7 @@ export const StringComponent: React.FC = () => {
             maxLength={11}
             isLimitText={true}
           />
-          <Button onClick={data.push(input)} text="Развернуть"/>
+          <Button onClick={handleClick} text="Развернуть"/>
         </div>
         <div className={style.circleContainer}>
         { data
