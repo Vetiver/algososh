@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import styles from "./sorting-page.module.css";
 import { Button } from "../ui/button/button";
 import { Column } from "../ui/column/column";
@@ -9,15 +9,20 @@ import { randomArr } from "../utils/functions";
 import { selectionSort } from "../utils/selectionSort";
 import { bubbleSort } from "../utils/bubleSort";
 import { SortArrayButtons } from "../../types/buttons";
+import { TSortingNumberArray } from "../utils/types";
 import { SHORT_ANIMATION } from "../../constants/constants";
 
 export const SortingPage: React.FC = () => {
   const [radioInputState, setRadioInputState] =
     useState<string>("selectionSort");
-  const [arrState, setArrState] = useState<any[]>([]);
+  const [arrState, setArrState] = useState<TSortingNumberArray[]>([]);
   const [activeButton, setActiveButton] = useState<SortArrayButtons | null>(
     null
   );
+
+  useEffect(() => {
+    setRandomArray();
+  }, []);
 
   const setSortingKind = (e: ChangeEvent<HTMLInputElement>) => {
     setRadioInputState(e.currentTarget.value);

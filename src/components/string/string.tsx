@@ -11,10 +11,11 @@ import { ElementStates } from "../../types/element-states";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
+import { TSortingStringArray, TStringArray } from "../utils/types";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 
 export const StringComponent: React.FC = () => {
-  const [allInputValuesArr, setAllInputValuesArr] = useState<any>([]);
+  const [allInputValuesArr, setAllInputValuesArr] = useState<TStringArray>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [sortingArray, setSortingArray] = useState<any[]>([]);
   const [buttonState, setButtonState] = useState<boolean>(false);
@@ -29,7 +30,7 @@ export const StringComponent: React.FC = () => {
   const swap = (
     firstElement: number,
     secondElement: number,
-    arr: any[]
+    arr: TSortingStringArray[]
   ) => {
     const saveFirstElement = arr[firstElement];
     arr[firstElement] = arr[secondElement];
@@ -39,8 +40,8 @@ export const StringComponent: React.FC = () => {
 
 
   async function sortArray(
-    arr: any[],
-    setSortingCharactersState: Dispatch<SetStateAction<any[]>>
+    arr: TSortingStringArray[],
+    setSortingCharactersState: Dispatch<SetStateAction<TSortingStringArray[]>>
   ) {
     setButtonState(true);
     const mid = Math.floor((arr.length - 1) / 2);

@@ -13,6 +13,7 @@ export type TQueueArr = {
   type: ElementStates;
 };
 
+
 export const QueuePage: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [queueArray, setQueueArray] = useState<(TQueueArr | null)[]>([]);
@@ -37,6 +38,7 @@ export const QueuePage: React.FC = () => {
     const targetValue = e.currentTarget.value;
     setInputValue(targetValue);
   };
+ 
 
   async function addToQueue() {
     if (inputValue) {
@@ -91,11 +93,12 @@ export const QueuePage: React.FC = () => {
       setActiveButton(null);
     }
   }
+ 
 
   return (
     <SolutionLayout title="Очередь">
       <div className={styles.stack}>
-        <form className={styles.stackContainer}>
+        <div className={styles.stackContainer}>
           <Input
             extraClass={styles.input}
             onChange={onChange}
@@ -125,7 +128,7 @@ export const QueuePage: React.FC = () => {
             disabled={isZeroQueue || (activeButton && activeButton !== StackAndQueueButtons.Clear && !queueArray.length) ? true
                 : false}
             onClick={clearQueue}/>
-        </form>
+        </div>
         <p className={styles.caption}>Максимум — 4 символа</p>
         <div className={styles.circleContainer}>
           {queueArray &&

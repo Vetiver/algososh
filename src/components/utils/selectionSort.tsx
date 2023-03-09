@@ -3,9 +3,10 @@ import { ElementStates } from "../../types/element-states";
 import {
   SHORT_ANIMATION,
 } from "../../constants/constants";
+import { TSortingNumberArray } from "./types";
 
 const swap = (
-    arr: any[],
+    arr: TSortingNumberArray[],
     firstIndex: number,
     secondIndex: number
   ) => {
@@ -15,9 +16,9 @@ const swap = (
   };
 
 export async function selectionSort(
-    arr: any[],
+    arr: TSortingNumberArray[],
     isInAscendingOrder: string,
-    sortNumbers: Dispatch<SetStateAction<any[]>>
+    sortNumbers: Dispatch<SetStateAction<TSortingNumberArray[]>>
   ) {
     const { length } = arr;
     switch (isInAscendingOrder) {

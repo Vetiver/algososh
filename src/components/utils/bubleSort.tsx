@@ -3,11 +3,12 @@ import { ElementStates } from "../../types/element-states";
 import {
     SHORT_ANIMATION,
   } from "../../constants/constants";
+import { TSortingNumberArray } from "./types";
 
   export async function bubbleSort(
-    arr: any[],
+    arr: TSortingNumberArray[],
     isInAscendingOrder: string,
-    sortNumbers: Dispatch<SetStateAction<any[]>>
+    sortNumbers: Dispatch<SetStateAction<TSortingNumberArray[]>>
   ) {
     const { length } = arr;
     switch (isInAscendingOrder) {
