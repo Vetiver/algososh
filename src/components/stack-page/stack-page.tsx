@@ -6,13 +6,14 @@ import { Button } from "../ui/button/button";
 import { Stack } from "./stack-class";
 import { ElementStates } from "../../types/element-states";
 import { Circle } from "../ui/circle/circle";
-import { SHORT_ANIMATION } from "../utils/constants";
+import { SHORT_ANIMATION } from "../../constants/constants";
+import { TSortingStringArray } from "../utils/types";
 import { StackAndQueueButtons } from "../../types/buttons";
 
 export const StackPage: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
-  const [stack] = useState(new Stack<any>());
-  const [stackArray, setStackArray] = useState<any[]>([]);
+  const [stack] = useState(new Stack<TSortingStringArray>());
+  const [stackArray, setStackArray] = useState<TSortingStringArray[]>([]);
   const [activeButton, setActiveButton] = useState<StackAndQueueButtons | null>(null);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +56,7 @@ export const StackPage: React.FC = () => {
     }
   };
 
-  const isTop = (arr: any[], index: number): string => {
+  const isTop = (arr: TSortingStringArray[], index: number): string => {
     const { length } = arr;
     return length - 1 === index ? "top" : "";
   };

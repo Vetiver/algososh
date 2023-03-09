@@ -9,7 +9,7 @@ import { Circle } from "../ui/circle/circle";
 import { ArrowIcon } from "../ui/icons/arrow-icon";
 import { randomNumber } from "../utils/functions";
 import { ElementStates } from "../../types/element-states";
-import { LONG_ANIMATION} from "../utils/constants";
+import { LONG_ANIMATION} from "../../constants/constants";
 import { LinkedListButtons } from "../../types/buttons";
 
 type TElementPointer = {
@@ -19,7 +19,7 @@ type TElementPointer = {
 
 export const ListPage: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
-  const [indexState, setIndexState] = useState<string>('');
+  const [indexState, setIndexState] = useState<string>("");
   const [arrayFromList, setArrayFromList] = useState<
     TSortingArray[]
   >([]);
@@ -29,7 +29,7 @@ export const ListPage: React.FC = () => {
   const [activeButton, setActiveButton] = useState<LinkedListButtons | null>(
     null
   );
-
+    console.log(indexState)
   const isIndexMetTheConditions = useMemo(() => {
     if (indexState) {
       return (arrayFromList.length &&
@@ -275,7 +275,7 @@ export const ListPage: React.FC = () => {
             isLoader={activeButton === LinkedListButtons.RemoveFromEnd && true}/>
         </div>
         <p className={styles.caption}>Максимум — 4 символа</p>
-        <form className={styles.stackContainer}>
+        <div className={styles.stackContainer}>
           <Input
             extraClass={styles.input}
             maxLength={4}
@@ -291,7 +291,7 @@ export const ListPage: React.FC = () => {
             text="Добавить по индексу"
             type="button"
             onClick={() => insertByIndex(Number(indexState), inputValue)}
-            disabled={!inputValue || !indexState || !arrayFromList.length || (activeButton && activeButton !== LinkedListButtons.InsertByIndex) ? true
+            disabled={!isIndexMetTheConditions || !inputValue || !indexState || !arrayFromList.length  || (activeButton && activeButton !== LinkedListButtons.InsertByIndex) ? true
             : false}
             isLoader={activeButton === LinkedListButtons.InsertByIndex && true}/>
           <Button
@@ -301,7 +301,7 @@ export const ListPage: React.FC = () => {
             disabled={!isIndexMetTheConditions || (activeButton && activeButton !== LinkedListButtons.ExtractByIndex) ? true
             : false}
             isLoader={activeButton === LinkedListButtons.ExtractByIndex && true}/>
-        </form>
+        </div>
         <div className={styles.circleContainer}>
           {arrayFromList &&
             arrayFromList.map((el, index) => {
