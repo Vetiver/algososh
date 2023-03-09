@@ -1,21 +1,30 @@
-.container {
-    
-    gap: 12px;
-    display: flex;
-    flex-direction: row;
+.stringContainer {
+  max-width: 522px;
+  margin: 0 auto;
 }
 
-.mainContainer {
-    display: flex;
-    flex-direction: column;
-    width: 567px;
-    margin-left: auto;
-    margin-right: auto;
+.inputContainer {
+  display: flex;
+  gap: 12px;
 }
 
-.circleContainer {
-    margin-top: 120px;
-    display: flex;
-    gap: 16px;
-    justify-content: center;
+
+.circlesContainer {
+  width: fit-content;
+  margin: 48px auto 0;
+  max-width: 945px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.span {
+  padding-left: 16px;
+  padding-right: 16px;
+   text-align: start;
+}
+
+.sequenceIndex {
+  display: inline-block;
+  padding-top: 8px;
 }
