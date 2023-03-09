@@ -12,6 +12,8 @@ export type TSortingNumberArray = {
   type: ElementStates;
 };
 
+
+
 export type TSortingArray = {
   value: any;
   type: ElementStates;
