@@ -6,7 +6,7 @@ import React, {
   SyntheticEvent,
   useState,
 } from "react";
-import { LONG_ANIMATION } from "../utils/constants";
+import { LONG_ANIMATION } from "../../constants/constants";
 import { ElementStates } from "../../types/element-states";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";

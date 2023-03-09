@@ -3,7 +3,7 @@ import styles from "./fibonacci-page.module.css";
 import { Button } from "../ui/button/button";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
-import { SHORT_ANIMATION } from "../utils/constants";
+import { SHORT_ANIMATION } from "../../constants/constants";
 import { Circle } from "../ui/circle/circle";
 
 export const FibonacciPage: React.FC = () => {

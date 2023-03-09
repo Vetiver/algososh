@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { ElementStates } from "../../types/element-states";
 import {
   SHORT_ANIMATION,
-} from "./constants";
+} from "../../constants/constants";
 
 const swap = (
     arr: any[],

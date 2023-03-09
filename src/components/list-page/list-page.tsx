@@ -9,7 +9,7 @@ import { Circle } from "../ui/circle/circle";
 import { ArrowIcon } from "../ui/icons/arrow-icon";
 import { randomNumber } from "../utils/functions";
 import { ElementStates } from "../../types/element-states";
-import { LONG_ANIMATION} from "../utils/constants";
+import { LONG_ANIMATION} from "../../constants/constants";
 import { LinkedListButtons } from "../../types/buttons";
 
 type TElementPointer = {

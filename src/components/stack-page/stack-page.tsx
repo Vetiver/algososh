@@ -6,7 +6,7 @@ import { Button } from "../ui/button/button";
 import { Stack } from "./stack-class";
 import { ElementStates } from "../../types/element-states";
 import { Circle } from "../ui/circle/circle";
-import { SHORT_ANIMATION } from "../utils/constants";
+import { SHORT_ANIMATION } from "../../constants/constants";
 import { StackAndQueueButtons } from "../../types/buttons";
 
 export const StackPage: React.FC = () => {

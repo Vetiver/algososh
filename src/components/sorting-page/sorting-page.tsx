@@ -9,7 +9,7 @@ import { randomArr } from "../utils/functions";
 import { selectionSort } from "../utils/selectionSort";
 import { bubbleSort } from "../utils/bubleSort";
 import { SortArrayButtons } from "../../types/buttons";
-import { SHORT_ANIMATION } from "../utils/constants";
+import { SHORT_ANIMATION } from "../../constants/constants";
 
 export const SortingPage: React.FC = () => {
   const [radioInputState, setRadioInputState] =

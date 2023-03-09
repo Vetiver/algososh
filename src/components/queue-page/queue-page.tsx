@@ -7,7 +7,7 @@ import { Input } from "../ui/input/input";
 import { Queue } from "./queue-class";
 import { StackAndQueueButtons } from "../../types/buttons";
 import { ElementStates } from "../../types/element-states";
-import { LONG_ANIMATION } from "../utils/constants";
+import { LONG_ANIMATION } from "../../constants/constants";
 export type TQueueArr = {
   value: null | number | string;
   type: ElementStates;
