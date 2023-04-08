@@ -21,6 +21,9 @@ export async function selectionSort(
     sortNumbers: Dispatch<SetStateAction<TSortingNumberArray[]>>
   ) {
     const { length } = arr;
+    if(length === 0) {
+      return;
+    }
     switch (isInAscendingOrder) {
       case "ascending": {
         for (let i = 0; i < length; i++) {
