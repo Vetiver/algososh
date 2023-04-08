@@ -1,3 +1,4 @@
+import {SHORT_ANIMATION} from '../../src/constants/constants'
 describe('fibonacci', function() {
     beforeEach(function() {
       cy.visit('http://localhost:3000/fibonacci');
@@ -15,5 +16,6 @@ describe('fibonacci', function() {
             cy.get('[data-testid="stringCircle"]').each((el, index, list) => {
               cy.get(el).contains(result[index]);
             });
+            cy.wait(SHORT_ANIMATION)
       }});
   }); 
