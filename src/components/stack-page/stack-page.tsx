@@ -66,11 +66,13 @@ export const StackPage: React.FC = () => {
       <div className={styles.stack}>
         <form onSubmit={push} className={styles.stackContainer}>
           <Input
+            data-testid="stackInput"
             extraClass={styles.input}
             onChange={onChange}
             maxLength={4}
             value={inputValue}/>
           <Button
+            data-testid="stackButtonAdd"
             extraClass={styles.button}
             text="Добавить"
             linkedList="small"
@@ -79,6 +81,7 @@ export const StackPage: React.FC = () => {
               ? true : false}
             isLoader={activeButton === StackAndQueueButtons.Add && true}/>
           <Button
+            data-testid="stackButtonDel"
             extraClass={styles.button}
             text="Удалить"
             linkedList="small"
@@ -87,6 +90,7 @@ export const StackPage: React.FC = () => {
             }
             isLoader={activeButton === StackAndQueueButtons.Remove && true}/>
           <Button
+            data-testid="stackButtonVoid"
             extraClass={styles.button}
             text="Очистить"
             linkedList="small"

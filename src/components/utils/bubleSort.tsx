@@ -11,6 +11,9 @@ import { TSortingNumberArray } from "./types";
     sortNumbers: Dispatch<SetStateAction<TSortingNumberArray[]>>
   ) {
     const { length } = arr;
+    if(arr.length == 0) {
+      return;
+    }
     switch (isInAscendingOrder) {
       case "ascending": {
         for (let i = 0; i < length; i++) {

@@ -234,6 +234,7 @@ export const ListPage: React.FC = () => {
       <div className={styles.stack}>
         <div className={styles.stackContainer}>
           <Input
+            data-testid="listInputEl"
             extraClass={styles.input}
             maxLength={4}
             placeholder="Введите значение"
@@ -241,6 +242,7 @@ export const ListPage: React.FC = () => {
             onChange={onChange}
           />
           <Button
+            data-testid="listButtonAddHead"
             extraClass={styles.button}
             text="Добавить в head"
             linkedList="small"
@@ -250,6 +252,7 @@ export const ListPage: React.FC = () => {
               : false}
             isLoader={activeButton === LinkedListButtons.AddToHead && true}/>
           <Button
+            data-testid="listButtonAddTail"
             extraClass={styles.button}
             text="Добавить в tail"
             linkedList="small"
@@ -258,6 +261,7 @@ export const ListPage: React.FC = () => {
             : false}
             isLoader={activeButton === LinkedListButtons.AddToEnd && true}/>
           <Button
+            data-testid="listButtonDelHead"
             extraClass={styles.button}
             text="Удалить из head"
             linkedList="small"
@@ -266,6 +270,7 @@ export const ListPage: React.FC = () => {
             : false}
             isLoader={activeButton === LinkedListButtons.RemoveFromHead && true}/>
           <Button
+            data-testid="listButtonDelTail"
             extraClass={styles.button}
             text="Удалить из tail"
             linkedList="small"
@@ -277,6 +282,7 @@ export const ListPage: React.FC = () => {
         <p className={styles.caption}>Максимум — 4 символа</p>
         <div className={styles.stackContainer}>
           <Input
+            data-testid="listInputIndex"
             extraClass={styles.input}
             maxLength={4}
             value={indexState}
@@ -287,6 +293,7 @@ export const ListPage: React.FC = () => {
             max={3}
           />
           <Button
+            data-testid="listButtonAddIndex"
             extraClass={styles.button}
             text="Добавить по индексу"
             type="button"
@@ -295,6 +302,7 @@ export const ListPage: React.FC = () => {
             : false}
             isLoader={activeButton === LinkedListButtons.InsertByIndex && true}/>
           <Button
+            data-testid="listButtonDelIndex"
             extraClass={styles.button}
             text="Удалить по индексу"
             onClick={() => removeByIndex(Number(indexState))}

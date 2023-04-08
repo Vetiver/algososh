@@ -64,6 +64,7 @@ export const FibonacciPage: React.FC = () => {
       <div className={styles.stringContainer}>
         <form onSubmit={submit} className={styles.inputContainer}>
           <Input
+            data-testid="fibonacciInput"
             min={1}
             max={19}
             placeholder="Введите текст"
@@ -71,6 +72,7 @@ export const FibonacciPage: React.FC = () => {
             type="number"
             value={String(inputValue)}/>
           <Button
+            data-testid="fibonacciButton"
             type="submit"
             text="Развернуть"
             linkedList="small"

@@ -100,12 +100,14 @@ export const QueuePage: React.FC = () => {
       <div className={styles.stack}>
         <div className={styles.stackContainer}>
           <Input
+            data-testid="queueInput"
             extraClass={styles.input}
             onChange={onChange}
             maxLength={4}
             value={inputValue}
           />
           <Button
+            data-testid="queueButtonAdd"
             extraClass={styles.button}
             text="Добавить"
             linkedList="small"
@@ -114,6 +116,7 @@ export const QueuePage: React.FC = () => {
                 : false}
             isLoader={activeButton === StackAndQueueButtons.Add && true}/>
           <Button
+            data-testid="queueButtonDel"
             extraClass={styles.button}
             text="Удалить"
             linkedList="small"
@@ -122,6 +125,7 @@ export const QueuePage: React.FC = () => {
                 : false}
             isLoader={activeButton === StackAndQueueButtons.Remove && true}/>
           <Button
+            data-testid="queueButtonVoid"
             extraClass={styles.button}
             text="Очистить"
             linkedList="small"
