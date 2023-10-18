@@ -12,27 +12,27 @@ import { StackPage } from "../stack-page/stack-page";
 function App() {
   return (
     <div className={styles.app}>
-      <BrowserRouter>
+      <BrowserRouter basename="/algososh">
         <Switch>
-          <Route path="/algososh/" exact>
+          <Route path="/" exact>
             <MainPage />
           </Route>
-          <Route path="/algososh/recursion">
+          <Route path="/recursion">
             <StringComponent />
           </Route>
-          <Route path="/algososh/fibonacci">
+          <Route path="/fibonacci">
             <FibonacciPage />
           </Route>
-          <Route path="/algososh/sorting">
+          <Route path="/sorting">
             <SortingPage />
           </Route>
-          <Route path="/algososh/stack">
+          <Route path="/stack">
             <StackPage />
           </Route>
-          <Route path="/algososh/queue">
+          <Route path="/queue">
             <QueuePage />
           </Route>
-          <Route path="/algososh/list">
+          <Route path="/list">
             <ListPage />
           </Route>
         </Switch>
