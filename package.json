@@ -1,4 +1,5 @@
 {
+  "homepage": "http://Vetiver.github.io/algososh",
   "name": "algorithms-project",
   "version": "0.1.0",
   "private": true,
@@ -22,6 +23,8 @@
   "scripts": {
     "cypress": "npx cypress open",
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-page -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -51,6 +54,7 @@
     "cypress": "^12.9.0",
     "eslint-plugin-cypress": "^2.13.2",
     "fetch-mock": "^9.11.0",
+    "gh-pages": "^6.0.0",
     "jest": "^27.5.1",
     "react-test-renderer": "^17.0.2",
     "redux-mock-store": "^1.5.4"
