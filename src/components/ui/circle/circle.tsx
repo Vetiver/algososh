@@ -30,21 +30,24 @@ export const Circle: React.FC<CircleProps> = ({
         } ${styles.head} ${
           styles[typeof head === "string" ? "string" : "element"]
         }`}
+        data-testid="head"
       >
         {head}
       </div>
-      <div
+      <div data-testid={!isSmall ? "stringCircle" : "circleTarget"}
         className={`${styles.circle}  ${isSmall ? styles.small : ""} ${
           styles[state]
         }`}
       >
         <p
+          data-testid={"contentCircle"}
           className={`text text_type_circle text_color_input ${styles.letter}`}
         >
           {letter}
         </p>
       </div>
       <p
+        data-testid={"circleIndex"}
         className={`text text_type_input text_color_input mt-4 ${styles.absolute} ${styles.index}`}
       >
         {index?.toString()}
@@ -55,6 +58,7 @@ export const Circle: React.FC<CircleProps> = ({
         } ${index?.toString() ? styles.tail60 : styles.tail30} ${
           styles[typeof tail === "string" ? "string" : "element"]
         }`}
+        data-testid="tail"
       >
         {tail}
       </div>

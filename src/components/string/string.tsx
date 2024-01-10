@@ -6,15 +6,51 @@ import React, {
   SyntheticEvent,
   useState,
 } from "react";
-import { LONG_ANIMATION } from "../utils/constants";
+import { LONG_ANIMATION } from "../../constants/constants";
 import { ElementStates } from "../../types/element-states";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
+import { TSortingStringArray, TStringArray } from "../utils/types";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 
+const swap = (
+  firstElement: number,
+  secondElement: number,
+  arr: TSortingStringArray[]
+) => {
+  const saveFirstElement = arr[firstElement];
+  arr[firstElement] = arr[secondElement];
+  arr[secondElement] = saveFirstElement;
+  return arr;
+};
+
+
+export async function sortArray(
+  setButtonState:Dispatch<SetStateAction<boolean>>,
+  arr: TSortingStringArray[],
+  setSortingCharactersState: Dispatch<SetStateAction<TSortingStringArray[]>>
+) {
+  setButtonState(true);
+  const mid = Math.floor((arr.length - 1) / 2);
+  for (let firstIndex = 0; firstIndex <= mid; firstIndex++) {
+    const secondIndex = arr.length - 1 - firstIndex;
+    if (firstIndex !== secondIndex) {
+      arr[firstIndex].type = ElementStates.Changing;
+      arr[secondIndex].type = ElementStates.Changing;
+      setSortingCharactersState([...arr]);
+      await new Promise((resolve) => setTimeout(resolve, LONG_ANIMATION));
+    }
+    swap(firstIndex, secondIndex, arr);
+    arr[firstIndex].type = ElementStates.Modified;
+    arr[secondIndex].type = ElementStates.Modified;
+    setSortingCharactersState([...arr]);
+  }
+  setButtonState(false);
+}
+
 export const StringComponent: React.FC = () => {
-  const [allInputValuesArr, setAllInputValuesArr] = useState<any>([]);
+  const [allInputValuesArr, setAllInputValuesArr] = useState<TStringArray>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [sortingArray, setSortingArray] = useState<any[]>([]);
   const [buttonState, setButtonState] = useState<boolean>(false);
@@ -26,47 +62,13 @@ export const StringComponent: React.FC = () => {
   };
 
 
-  const swap = (
-    firstElement: number,
-    secondElement: number,
-    arr: any[]
-  ) => {
-    const saveFirstElement = arr[firstElement];
-    arr[firstElement] = arr[secondElement];
-    arr[secondElement] = saveFirstElement;
-    return arr;
-  };
-
-
-  async function sortArray(
-    arr: any[],
-    setSortingCharactersState: Dispatch<SetStateAction<any[]>>
-  ) {
-    setButtonState(true);
-    const mid = Math.floor((arr.length - 1) / 2);
-    for (let firstIndex = 0; firstIndex <= mid; firstIndex++) {
-      const secondIndex = arr.length - 1 - firstIndex;
-      if (firstIndex !== secondIndex) {
-        arr[firstIndex].type = ElementStates.Changing;
-        arr[secondIndex].type = ElementStates.Changing;
-        setSortingArray([...arr]);
-        await new Promise((resolve) => setTimeout(resolve, LONG_ANIMATION));
-      }
-      swap(firstIndex, secondIndex, arr);
-      arr[firstIndex].type = ElementStates.Modified;
-      arr[secondIndex].type = ElementStates.Modified;
-      setSortingCharactersState([...arr]);
-    }
-    setButtonState(false);
-  }
-
   const submit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const arrForDisplay = allInputValuesArr.map((item: any) => {
       return { value: item, type: ElementStates.Default };
     });
     setSortingArray([...arrForDisplay]);
-    sortArray(arrForDisplay, setSortingArray);
+    sortArray(setButtonState, arrForDisplay, setSortingArray);
     setInputValue("");
   };
 
@@ -75,12 +77,14 @@ export const StringComponent: React.FC = () => {
       <div className={styles.container}>
         <form onSubmit={submit} className={styles.inputContainer}>
           <Input
+            data-testid="stringInput"
             placeholder="Введите текст"
             maxLength={11}
             onChange={onChange}
             value={inputValue}
           ></Input>
           <Button
+            data-testid="stringButton"
             type="submit"
             text="Развернуть"
             linkedList="small"

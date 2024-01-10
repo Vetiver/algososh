@@ -23,22 +23,22 @@ export const MainPage: React.FC<MainPageProps> = ({ extraClass = "" }) => {
       </div>
       <div className={styles.cards_box}>
         <Link className={styles.link} to="/recursion">
-          <div className={`${styles.card} ${styles.string}`} />
+          <div data-testid='recursion' className={`${styles.card} ${styles.string}`} />
         </Link>
         <Link className={styles.link} to="/fibonacci">
-          <div className={`${styles.card} ${styles.fibonacci}`} />
+          <div data-testid='fibonacci' className={`${styles.card} ${styles.fibonacci}`} />
         </Link>
         <Link className={styles.link} to="/sorting">
-          <div className={`${styles.card} ${styles.arr}`} />
+          <div data-testid='sorting' className={`${styles.card} ${styles.arr}`} />
         </Link>
         <Link className={styles.link} to="/stack">
-          <div className={`${styles.card} ${styles.stack}`} />
+          <div data-testid='stack' className={`${styles.card} ${styles.stack}`} />
         </Link>
         <Link className={styles.link} to="/queue">
-          <div className={`${styles.card} ${styles.queue}`} />
+          <div data-testid='queue' className={`${styles.card} ${styles.queue}`} />
         </Link>
         <Link className={styles.link} to="/list">
-          <div className={`${styles.card} ${styles.list}`} />
+          <div data-testid='list' className={`${styles.card} ${styles.list}`} />
         </Link>
       </div>
       <Marquee className={styles.ticker} gradient={false} speed={200}>

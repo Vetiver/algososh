@@ -6,13 +6,14 @@ import { Button } from "../ui/button/button";
 import { Stack } from "./stack-class";
 import { ElementStates } from "../../types/element-states";
 import { Circle } from "../ui/circle/circle";
-import { SHORT_ANIMATION } from "../utils/constants";
+import { SHORT_ANIMATION } from "../../constants/constants";
+import { TSortingStringArray } from "../utils/types";
 import { StackAndQueueButtons } from "../../types/buttons";
 
 export const StackPage: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
-  const [stack] = useState(new Stack<any>());
-  const [stackArray, setStackArray] = useState<any[]>([]);
+  const [stack] = useState(new Stack<TSortingStringArray>());
+  const [stackArray, setStackArray] = useState<TSortingStringArray[]>([]);
   const [activeButton, setActiveButton] = useState<StackAndQueueButtons | null>(null);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +56,7 @@ export const StackPage: React.FC = () => {
     }
   };
 
-  const isTop = (arr: any[], index: number): string => {
+  const isTop = (arr: TSortingStringArray[], index: number): string => {
     const { length } = arr;
     return length - 1 === index ? "top" : "";
   };
@@ -65,11 +66,13 @@ export const StackPage: React.FC = () => {
       <div className={styles.stack}>
         <form onSubmit={push} className={styles.stackContainer}>
           <Input
+            data-testid="stackInput"
             extraClass={styles.input}
             onChange={onChange}
             maxLength={4}
             value={inputValue}/>
           <Button
+            data-testid="stackButtonAdd"
             extraClass={styles.button}
             text="Добавить"
             linkedList="small"
@@ -78,6 +81,7 @@ export const StackPage: React.FC = () => {
               ? true : false}
             isLoader={activeButton === StackAndQueueButtons.Add && true}/>
           <Button
+            data-testid="stackButtonDel"
             extraClass={styles.button}
             text="Удалить"
             linkedList="small"
@@ -86,6 +90,7 @@ export const StackPage: React.FC = () => {
             }
             isLoader={activeButton === StackAndQueueButtons.Remove && true}/>
           <Button
+            data-testid="stackButtonVoid"
             extraClass={styles.button}
             text="Очистить"
             linkedList="small"

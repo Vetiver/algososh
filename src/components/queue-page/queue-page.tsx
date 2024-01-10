@@ -7,11 +7,12 @@ import { Input } from "../ui/input/input";
 import { Queue } from "./queue-class";
 import { StackAndQueueButtons } from "../../types/buttons";
 import { ElementStates } from "../../types/element-states";
-import { LONG_ANIMATION } from "../utils/constants";
+import { LONG_ANIMATION } from "../../constants/constants";
 export type TQueueArr = {
   value: null | number | string;
   type: ElementStates;
 };
+
 
 export const QueuePage: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
@@ -37,6 +38,7 @@ export const QueuePage: React.FC = () => {
     const targetValue = e.currentTarget.value;
     setInputValue(targetValue);
   };
+ 
 
   async function addToQueue() {
     if (inputValue) {
@@ -91,18 +93,21 @@ export const QueuePage: React.FC = () => {
       setActiveButton(null);
     }
   }
+ 
 
   return (
     <SolutionLayout title="Очередь">
       <div className={styles.stack}>
-        <form className={styles.stackContainer}>
+        <div className={styles.stackContainer}>
           <Input
+            data-testid="queueInput"
             extraClass={styles.input}
             onChange={onChange}
             maxLength={4}
             value={inputValue}
           />
           <Button
+            data-testid="queueButtonAdd"
             extraClass={styles.button}
             text="Добавить"
             linkedList="small"
@@ -111,6 +116,7 @@ export const QueuePage: React.FC = () => {
                 : false}
             isLoader={activeButton === StackAndQueueButtons.Add && true}/>
           <Button
+            data-testid="queueButtonDel"
             extraClass={styles.button}
             text="Удалить"
             linkedList="small"
@@ -119,13 +125,14 @@ export const QueuePage: React.FC = () => {
                 : false}
             isLoader={activeButton === StackAndQueueButtons.Remove && true}/>
           <Button
+            data-testid="queueButtonVoid"
             extraClass={styles.button}
             text="Очистить"
             linkedList="small"
             disabled={isZeroQueue || (activeButton && activeButton !== StackAndQueueButtons.Clear && !queueArray.length) ? true
                 : false}
             onClick={clearQueue}/>
-        </form>
+        </div>
         <p className={styles.caption}>Максимум — 4 символа</p>
         <div className={styles.circleContainer}>
           {queueArray &&

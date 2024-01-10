@@ -3,7 +3,7 @@ import styles from "./fibonacci-page.module.css";
 import { Button } from "../ui/button/button";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
-import { SHORT_ANIMATION } from "../utils/constants";
+import { SHORT_ANIMATION } from "../../constants/constants";
 import { Circle } from "../ui/circle/circle";
 
 export const FibonacciPage: React.FC = () => {
@@ -64,6 +64,7 @@ export const FibonacciPage: React.FC = () => {
       <div className={styles.stringContainer}>
         <form onSubmit={submit} className={styles.inputContainer}>
           <Input
+            data-testid="fibonacciInput"
             min={1}
             max={19}
             placeholder="Введите текст"
@@ -71,6 +72,7 @@ export const FibonacciPage: React.FC = () => {
             type="number"
             value={String(inputValue)}/>
           <Button
+            data-testid="fibonacciButton"
             type="submit"
             text="Развернуть"
             linkedList="small"

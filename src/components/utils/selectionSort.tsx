@@ -2,10 +2,11 @@ import { Dispatch, SetStateAction } from "react";
 import { ElementStates } from "../../types/element-states";
 import {
   SHORT_ANIMATION,
-} from "./constants";
+} from "../../constants/constants";
+import { TSortingNumberArray } from "./types";
 
 const swap = (
-    arr: any[],
+    arr: TSortingNumberArray[],
     firstIndex: number,
     secondIndex: number
   ) => {
@@ -15,11 +16,14 @@ const swap = (
   };
 
 export async function selectionSort(
-    arr: any[],
+    arr: TSortingNumberArray[],
     isInAscendingOrder: string,
-    sortNumbers: Dispatch<SetStateAction<any[]>>
+    sortNumbers: Dispatch<SetStateAction<TSortingNumberArray[]>>
   ) {
     const { length } = arr;
+    if(length === 0) {
+      return;
+    }
     switch (isInAscendingOrder) {
       case "ascending": {
         for (let i = 0; i < length; i++) {
